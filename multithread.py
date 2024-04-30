@@ -3,7 +3,7 @@ import time, threading, random as r
 import matplotlib.pyplot as plt
 
 
-def matrix_mul(X, Y):
+def func(X, Y):
     result = [[0 for j in range(len(X))] for k in range(len(Y))]
     # iterate through rows of X
     for i in range(len(X)):
@@ -16,7 +16,7 @@ def matrix_mul(X, Y):
 
 def task(startIndex, endIndex, Y):
     for i in range(startIndex, endIndex+1):
-        matrix_mul(matrix_list[i], Y)
+        func(matrix_list[i], Y)
 
 
 def run_threads(num_threads):
@@ -46,9 +46,3 @@ if __name__ == "__main__":
         execution_time = run_threads(num_threads)
         execution_times.append(execution_time)
         print(f"Number of threads: {num_threads}, Execution time: {execution_time} seconds")
-
-    plt.plot(num_threads_list, execution_times)
-    plt.xlabel('Number of Threads')
-    plt.ylabel('Execution Time (seconds)')
-    plt.title('Number of Threads vs Execution Time')
-    plt.show()
